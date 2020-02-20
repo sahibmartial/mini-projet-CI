@@ -1,0 +1,8 @@
+  - name: "Download fake-backend source code"
+    git:
+      repo: "{{ fake_backend_git_url }}" 
+      dest: "{{ home }}/fake-backend"
+      force: "yes"
+      recursive: "no"
+      key_file: "{{ home }}/.ssh/id_rsa"
+      accept_hostkey: "yes"

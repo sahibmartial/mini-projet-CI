@@ -1,0 +1,57 @@
+version: "3.7"
+services:
+     #WEB
+     web:
+       hostname: "battleboat_sahib"
+       image: "sahibmartial/fake:V1"
+       container_name: "battleboat_sahib"
+       volumes: 
+          - ./fake-backend:/var/www/html
+       environment:
+          DATABASE_HOST: "dbbattleboat_sahib"
+          DATABASE_NAME: "battleboat"
+          DATABASE_USER: "battleuser"
+          DATABASE_PASSWORD: "battlepass"
+          DATABASE_PORT: "3306"
+       ports:
+          - 8181:3000
+       restart: "always"
+       networks:
+          - battleboat
+       depends_on:
+          - dbbattleboat_sahib 
+
+     #DB
+     dbbattleboat_sahib:
+        hostname: "dbbattleboat_sahib"
+        image: "mysql:5.7"
+        container_name: "dbbattleboat_sahib"
+        volumes: 
+          - ./data_mysql:/var/lib/mysql
+        environment:
+          MYSQL_ROOT_PASSWORD: "root"
+          MYSQL_DATABASE: "battleboat"
+          MYSQL_USER: "battleuser"
+          MYSQL_PASSWORD: "battlepass"
+        ports:
+          - 3306:3306
+        networks:
+          - battleboat
+        restart: "always"
+
+     #Phpmyadmin
+     myadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+          - "8282:80"
+        depends_on:
+          - dbbattleboat_sahib 
+        links:
+          - dbbattleboat_sahib:db
+
+volumes:
+    data_mysql:
+networks:  
+     battleboat:
+       name: "battleboat"
+
