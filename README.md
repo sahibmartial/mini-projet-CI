@@ -1,5 +1,6 @@
 # Battleboat
-[![Build Status](http://ec2-54-91-247-110.compute-1.amazonaws.com/buildStatus/icon?job=projet-ci-master)](http://ec2-54-91-247-110.compute-1.amazonaws.com/job/projet-ci-master/) 
+#[![Build Status](http://ec2-54-91-247-110.compute-1.amazonaws.com/buildStatus/icon?job=projet-ci-master)](http://ec2-54-91-247-110.compute-1.amazonaws.com/job/projet-ci-master/) 
+#bagde
 #Integration continue 
 ## Project description
 
